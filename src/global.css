@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body{
+    @apply bg-black
+}
+.wrapp{
+    @apply container mx-auto bg-colisao-500 h-96;
+}
