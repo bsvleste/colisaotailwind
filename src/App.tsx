@@ -1,14 +1,19 @@
 import { useState } from 'react'
+import { isAdm, isAuthenticated } from './Auth'
 import { Header } from './componentes/Header'
+import Rotas from './Routes'
 
 
 export function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Header/>
-      <h2 className='mt-25 text-slate-200'>Projeto em Produção</h2>
+     {
+          isAuthenticated() ? (
+            <Header auth={isAdm()}/>
+          ) :
+            ''
+        }
+      <Rotas />
     </>
   )
 }
