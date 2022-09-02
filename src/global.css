@@ -3,5 +3,5 @@
 @import 'tailwindcss/utilities';
 
 body{
-    @apply container bg-black mx-3 sm:mx-auto
+    @apply bg-black mx-3 sm:mx-auto
 }

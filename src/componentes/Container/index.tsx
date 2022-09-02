@@ -1,3 +1,3 @@
 export function Container({children}){
-    return <div className="container mx-3 sm:mx-auto flex justify-center">{children}</div>
+    return <div className="container mx-auto flex flex-col justify-center" >{children}</div>
 }
