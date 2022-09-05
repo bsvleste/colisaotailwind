@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { isAdm, isAuthenticated } from './Auth'
-import { Header } from './componentes/Header'
+import { Header } from './components/Header'
 import Rotas from './Routes'
 
 
