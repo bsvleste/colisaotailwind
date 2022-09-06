@@ -2,10 +2,14 @@
 import logoColisao from '../../assets/logoColisao.png'
 import logoAdversario from '../../assets/logoAdversario.png'
 type FirstMatchProps={
-    scoreboarFirstMatch:string;
+    primeiro:{
+        primeiroColisao:string;
+        primeiroAdversario:string
+    }
 }
 
-export function FirstMatch({scoreboarFirstMatch}:FirstMatchProps){
+export function FirstMatch({primeiro}:FirstMatchProps){
+    const{primeiroAdversario,primeiroColisao} = primeiro
     return (
         <>
             <div className="w-full sm:w-[35.5rem] text-colisao-500 bg-black h-48 flex flex-col justify-center items-center">
@@ -15,7 +19,7 @@ export function FirstMatch({scoreboarFirstMatch}:FirstMatchProps){
                         <img src={logoColisao} className='w-16 h-16 rounded-full' alt="Logo Colisao" />
                          <h1>Colisao</h1>
                     </div>
-                    <h3 className="font-bold">{scoreboarFirstMatch}</h3>
+                    <h3 className="font-bold">{primeiroColisao} X {primeiroAdversario}</h3>
                     <div className=' flex flex-col justify-center items-center'>
                         <img src={logoAdversario} className='w-16 h-16 rounded-full' alt="Logo Colisao" />
                         <h1>Adversario</h1>
