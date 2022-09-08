@@ -50,10 +50,8 @@ export function CardScoreboard(){
         <Container>
             <Button />              
             <SelectedMonth selectedDate={selectedDate} handleChangeDate={handleChangeDate}/>
-                {scoreboard.map((data)=>( 
-                    <div key={data._id}>
-                     <CardMatch  info={data}/>
-                    </div>                 
+                {scoreboard.map((data)=>(
+                     <CardMatch key={data._id} info={data}/>                                     
                  ))}            
         </Container>
     )

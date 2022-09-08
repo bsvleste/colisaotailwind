@@ -9,6 +9,7 @@ import { isAuthenticated,  } from './Auth';
 import { Bid } from "./pages/Bid";
 import { Scoreboard } from "./pages/Scoreboard";
 import { SignIn } from "./pages/SignIn";
+import { WelCome } from "./pages/Welcome";
 /* import Login from './Login/Login';
 import CriaUsuario from './Login/CriaUsuario';
 import Bid from './Bid/Bid';
@@ -41,7 +42,8 @@ const Rotas = () => (
       <Routes>
         <Route  path="/bid" element={<PrivateRoutes Item={Bid}/>}/>
         <Route  path="/sign-in" element={<SignIn />}/>
-        <Route  path="/" element={<Scoreboard />}/>
+        <Route  path="/scoreboard" element={<Scoreboard />}/>
+        <Route  path="/" element={<WelCome />}/>
           {/* <Route index element={<Home />} />
           <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />

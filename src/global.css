@@ -3,5 +3,6 @@
 @import 'tailwindcss/utilities';
 
 body{
-    @apply bg-black mx-3 sm:mx-auto
+    @apply bg-black mx-3 sm:mx-auto text-colisao-500
+
 }
