@@ -6,7 +6,7 @@ export function WelCome(){
     let navigate = useNavigate();
     return(
         <>
-        <div className="grid grid-cols-1 sm:grid-cols-2 mt-16 sm:mt-0 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 mt-16 sm:mt-0 mx-3 sm:mx-auto">
            
             <div className="flex justify-center items-center mb-2">
                 <img src="/img/logoColisao.png" />
