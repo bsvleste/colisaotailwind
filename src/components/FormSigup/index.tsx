@@ -1,8 +1,16 @@
-import { Envelope, LockKey } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Envelope, LockKey, User } from "phosphor-react";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { isAuthenticated } from "../../Auth";
 
 
-export function FormSigin(){
+export function FromSignup(){
+    let navigate = useNavigate();
+    useEffect(()=>{
+        if (isAuthenticated()) {
+            navigate("/");
+          }
+    },[])
     return(
 
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-16 sm:mt-0 mx-3 sm:mx-auto">
@@ -18,11 +26,17 @@ export function FormSigin(){
                             font-black
                             relative ml-3
                             after:absolute after:-bottom-0 after:-left-4 after:content[''] after:h-8  after:border-l-8 after:border-l-colisao-500 sm:after:border-l-black  text-2xl">
-                            <h2>Sign In</h2>
+                            <h2>Sign Up</h2>
                         </div>
                     </div>
                     
                     <form action="" className="mt-4" >
+                        <div className="flex items-center  border-colisao-500 border-b-2 sm:border-black    px-0 py-4 mt-3">
+                            <div className="flex text-colisao-500 sm:text-black ml-2 ">
+                            <User size={32} />
+                            </div>
+                            <input type="text" name="name" placeholder="Digite seu nome" className="placeholder:italic placeholder:text-yellow-300  sm:placeholder:text-black w-screen px-4 py-0 bg-transparent text-colisao-500 sm:text-black border-0 outline-none" />
+                        </div>     
                         <div className="flex items-center border-colisao-500 border-b-2 sm:border-black   px-0 py-4">
                             <div className="flex text-colisao-500 sm:text-black ml-2 ">
                                 <Envelope size={32}/>
@@ -35,12 +49,18 @@ export function FormSigin(){
                             </div>
                             <input type="password" name="password" placeholder="Password" className="placeholder:italic placeholder:text-yellow-300  sm:placeholder:text-black w-screen px-4 py-0 bg-transparent text-colisao-500 sm:text-black border-0 outline-none" />
                         </div>     
+                        <div className="flex items-center  border-colisao-500 border-b-2 sm:border-black    px-0 py-4 mt-3">
+                            <div className="flex text-colisao-500 sm:text-black ml-2 ">
+                            <LockKey size={32} />
+                            </div>
+                            <input type="password" name="passwordConfirm" placeholder="Confirme Password" className="placeholder:italic placeholder:text-yellow-300  sm:placeholder:text-black w-screen px-4 py-0 bg-transparent text-colisao-500 sm:text-black border-0 outline-none" />
+                        </div>     
                     
                         <button className="bg-colisao-500 text-black sm:bg-black sm:text-colisao-500 mt-4 w-full h-14 rounded-md">Enviar</button>
                     </form>
                     <div className="flex flex-col items-end mt-6 mx-6 sm:mx-auto">
-                    <a href="" className="link-underline link-underline-black link-underline:hover">Forgot your password</a>
-                    <span className="mt-4">Don't have an account?  <Link to="/signup" className="link-underline link-underline-black link-underline:hover">Sing up</Link></span>
+                    <Link to="/signin" className="link-underline link-underline-black link-underline:hover">Sign In</Link>
+                    
                 </div>
                </div>               
             </div>                

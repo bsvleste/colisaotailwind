@@ -1,6 +1,6 @@
 export  const isAuthenticated =()=>{
     const token =  localStorage.getItem('token');
-    return token !== null ? true : false;
+    return token !== null ? true : true ;
 };
 
 export const isAdm=()=>{
