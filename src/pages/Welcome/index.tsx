@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../Auth";
+import { AuthContext } from "../../contexts/AuthContexts";
 
 
 export function WelCome(){

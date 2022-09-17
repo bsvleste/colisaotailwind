@@ -18,6 +18,7 @@ import { WelCome } from "./pages/Welcome";
 
 
 const PrivateRoutes = ()=>{
+  
   const location = useLocation();
   const signed = isAuthenticated();
   
@@ -25,7 +26,7 @@ const PrivateRoutes = ()=>{
 }
 const Rotas = () => (
     
-    <BrowserRouter>
+    
       <Routes>
       <Route  path="/signin" element={<SignIn />}/>
       <Route  path="/signup" element={<Signup />}/>
@@ -37,7 +38,7 @@ const Rotas = () => (
         <Route path="*" element={<Bid/>} />
       </Route> 
       </Routes>
-    </BrowserRouter>
+    
 )
 
 

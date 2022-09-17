@@ -1,8 +1,23 @@
 import { Envelope, LockKey } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { FormEvent, useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContexts";
 
 
 export function FormSigin(){
+    const {signIn,erroAuth ,isAuthenticated} = useContext(AuthContext)
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    async function handleLogin(e:FormEvent){
+        e.preventDefault();
+        await signIn({email,password})
+    }
+    let navigate = useNavigate();
+    useEffect(()=>{
+        if (isAuthenticated) {
+            navigate("/");
+          }
+    },[])
     return(
 
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-16 sm:mt-0 mx-3 sm:mx-auto">
@@ -21,19 +36,23 @@ export function FormSigin(){
                             <h2>Sign In</h2>
                         </div>
                     </div>
-                    
-                    <form action="" className="mt-4" >
+                    {erroAuth && (
+                        <div style={{ color: '#ff0000' }}>
+                            Login ou Senha Invalidos tente novamente
+                        </div>
+                    )}
+                    <form action="" className="mt-4" onSubmit={handleLogin} >
                         <div className="flex items-center border-colisao-500 border-b-2 sm:border-black   px-0 py-4">
                             <div className="flex text-colisao-500 sm:text-black ml-2 ">
                                 <Envelope size={32}/>
                             </div>
-                            <input type="email" name="email" placeholder="Email" className="placeholder:italic placeholder:text-yellow-300 sm:placeholder:text-black w-screen px-4 py-0 bg-transparent text-colisao-500  sm:text-black border-0 outline-none" />
+                            <input onChange={(e)=>setEmail(e.target.value)} type="email" name="email" placeholder="Email" className="placeholder:italic placeholder:text-yellow-300 sm:placeholder:text-black w-screen px-4 py-0 bg-transparent text-colisao-500  sm:text-black border-0 outline-none" />
                         </div>     
                         <div className="flex items-center  border-colisao-500 border-b-2 sm:border-black    px-0 py-4 mt-3">
                             <div className="flex text-colisao-500 sm:text-black ml-2 ">
                             <LockKey size={32} />
                             </div>
-                            <input type="password" name="password" placeholder="Password" className="placeholder:italic placeholder:text-yellow-300  sm:placeholder:text-black w-screen px-4 py-0 bg-transparent text-colisao-500 sm:text-black border-0 outline-none" />
+                            <input onChange={(e)=>setPassword(e.target.value)} type="password" name="password" placeholder="Password" className="placeholder:italic placeholder:text-yellow-300  sm:placeholder:text-black w-screen px-4 py-0 bg-transparent text-colisao-500 sm:text-black border-0 outline-none" />
                         </div>     
                     
                         <button className="bg-colisao-500 text-black sm:bg-black sm:text-colisao-500 mt-4 w-full h-14 rounded-md">Enviar</button>

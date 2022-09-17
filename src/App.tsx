@@ -1,15 +1,17 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { isAdm, isAuthenticated } from './Auth'
 import { Header } from './components/Header'
+import { AuthContext, AuthProvider } from './contexts/AuthContexts'
 import Rotas from './Routes'
 
 
 export function App() {
-  return (
+  const { isAuthenticated}= useContext(AuthContext)
+  return (  
     <>
      {
-          isAuthenticated() ? (
-            <Header auth={isAdm()}/>
+          isAuthenticated ? (
+            <Header />
           ) :
             ''
         }

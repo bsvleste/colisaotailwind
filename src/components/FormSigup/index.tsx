@@ -1,5 +1,5 @@
 import { Envelope, LockKey, User } from "phosphor-react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../Auth";
 
@@ -7,7 +7,7 @@ import { isAuthenticated } from "../../Auth";
 export function FromSignup(){
     let navigate = useNavigate();
     useEffect(()=>{
-        if (isAuthenticated()) {
+        if (isAuthenticated() ) {
             navigate("/");
           }
     },[])
