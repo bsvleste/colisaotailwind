@@ -31,14 +31,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
     let navigate = useNavigate();
     const [user, setUser] = useState<UserProps>();
     const [erroAuth, setErroAuth] = useState(false);
-    const isAuthenticated = !!user;
+    const [isAuthenticated,setIsAuthenticated] = useState(false)
     const token =  localStorage.getItem('token');
     const config = {
         headers: {
         Authorization: `Bearer ${token}`,
         },
   };
-  useEffect(() => {
+  
+  /* useEffect(() => {
     authChannel = new BroadcastChannel('auth');
     authChannel.onmessage = (message) => {
       switch (message.data) {
@@ -49,9 +50,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
           break;
       }
     };
-  }, []);
+  }, []); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (token) {
       api
         .get('/auth/authInfo', config)
@@ -71,11 +72,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
             navigate('/welcome');
         });
     }
-  }, []);
+  }, []); */
 
   async function signOut() {
-    localStorage.removeItem('token')
-    /*  setUser({}); */
+    localStorage.removeItem('token')    
+     setIsAuthenticated(false)
     navigate('/welcome');
   }
   async function signIn({ email, password }: SignInCredentials) {
@@ -102,6 +103,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
      /*  api.instance.defaults.headers.common['Authorization'] = `Bearer ${token}`; */
       setErroAuth(false);
+      setIsAuthenticated(true)
       navigate('/');
     } catch (error) {
       console.log(`Erro ao signin ${error}`);

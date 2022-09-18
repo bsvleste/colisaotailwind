@@ -5,16 +5,10 @@ import { isAuthenticated } from "../../Auth";
 
 
 export function FromSignup(){
-    let navigate = useNavigate();
-    useEffect(()=>{
-        if (isAuthenticated() ) {
-            navigate("/");
-          }
-    },[])
+    
     return(
-
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-16 sm:mt-0 mx-3 sm:mx-auto">
-           
+          
             <div className="flex justify-center items-center mb-2">
                 <img src="/img/logoColisao.png" className="w-36 sm:w-1/2" />
             </div>               

@@ -5,27 +5,21 @@ import { AuthContext } from "../../contexts/AuthContexts";
 
 
 export function FormSigin(){
-    const {signIn,erroAuth ,isAuthenticated} = useContext(AuthContext)
+
+    const {signIn,erroAuth} = useContext(AuthContext)
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     async function handleLogin(e:FormEvent){
         e.preventDefault();
         await signIn({email,password})
     }
-    let navigate = useNavigate();
-    useEffect(()=>{
-        if (isAuthenticated) {
-            navigate("/");
-          }
-    },[])
+    
     return(
 
         <div className="grid grid-cols-1 sm:grid-cols-2 mt-16 sm:mt-0 mx-3 sm:mx-auto">
-           
             <div className="flex justify-center items-center mb-2">
                 <img src="/img/logoColisao.png" className="w-36 sm:w-1/2" />
             </div>               
-            
             <div className="flex flex-col justify-center sm:bg-colisao-500 sm:text-black sm:items-center  sm:h-screen">
                <div className="w-11/12 sm:w-9/12 mx-auto mt-8">               
                     <div className="ml-1 sm:mx-auto">

@@ -5,10 +5,11 @@ import { AuthContext } from "../../contexts/AuthContexts";
 
 
 export function WelCome(){
+    const {isAuthenticated} = useContext(AuthContext)
     let navigate = useNavigate();
     let location = useLocation();
     useEffect(()=>{
-        if (isAuthenticated()) {
+        if (isAuthenticated) {
             navigate("/");
           }
     },[])

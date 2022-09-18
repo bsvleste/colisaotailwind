@@ -1,9 +1,8 @@
-import { useState } from "react";
 import { ScoreboardMatchProps } from ".";
 import { FirstMatch } from "./FirstMatch"
 import { SecondMatch } from "./SecondMatch"
-import logoColisao from '../../assets/logoColisao.png'
-import logoAdversario from '../../assets/logoAdversario.png'
+import Can from "../Can";
+import { Button } from "../Button";
 type CardMatchProps={
     info: ScoreboardMatchProps;
 }
@@ -24,7 +23,12 @@ export function CardMatch({info}:CardMatchProps){
            
                 <SecondMatch segundo={segundoQuadro}/>
                 <FirstMatch primeiro={primeiroQuadro}/>
-               
+                <Can roles={['administrator']}>
+                    <div className="w-full sm:w-[35.5rem] flex justify-between tems-center">
+                        <button className="sm:w-2/5 rounded-md text-black bg-colisao-500 w-full  h-14 mt-8 mb-8">Editar</button>
+                        <button className="ml-3 sm:w-2/5  rounded-md text-colisao-500 bg-slate-900 w-full  h-14 mt-8 mb-8">Deletar</button>
+                    </div>                   
+                </Can>
            
         </>
     )
