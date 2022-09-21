@@ -3,13 +3,13 @@ import { FirstMatch } from "./FirstMatch"
 import { SecondMatch } from "./SecondMatch"
 import Can from "../Can";
 import { Button } from "../Button";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContexts";
 type CardMatchProps={
     info: ScoreboardMatchProps;
 }
 export function CardMatch({info}:CardMatchProps){
-   
     const {_id,dataPartida,primeiroQuadro,segundoQuadro} = info;
-   
     return (
         <>         
             <h1 className="font-bold mt-4 text-colisao-500 text-center">

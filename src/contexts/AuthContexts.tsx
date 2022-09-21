@@ -33,14 +33,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const [erroAuth, setErroAuth] = useState(false);
     const [isAuthenticated,setIsAuthenticated] = useState(false)
     const token =  localStorage.getItem('token');
+    const dataUser = localStorage.getItem('user')
     const config = {
         headers: {
         Authorization: `Bearer ${token}`,
         },
   };
   
-  /* useEffect(() => {
-    authChannel = new BroadcastChannel('auth');
+  useEffect(() => {
+    if(dataUser!==null){
+      const infoUser = JSON.parse(localStorage.getItem('user'))
+      setUser({
+        nome:infoUser?.nome,
+        email:infoUser?.email,
+        id:infoUser?.id,
+        isAdm:infoUser?.isAdm,
+        permissions:infoUser?.permissions,
+        roles:infoUser?.roles
+      })
+      setIsAuthenticated(true)
+    }
+  
+   /*  authChannel = new BroadcastChannel('auth');
     authChannel.onmessage = (message) => {
       switch (message.data) {
         case 'signOut':
@@ -49,8 +63,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         default:
           break;
       }
-    };
-  }, []); */
+    }; */
+  }, []);
 
   /* useEffect(() => {
     if (token) {
@@ -76,6 +90,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function signOut() {
     localStorage.removeItem('token')    
+    localStorage.removeItem('user')    
      setIsAuthenticated(false)
     navigate('/welcome');
   }
@@ -85,13 +100,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
         email,
         password,
       });
-      console.log(response.data);
+      
       const { isAdm, nome, id, token, tokenisAdm, roles, permissions } =
         response.data;
-      console.log(`${tokenisAdm} esta coom`);
       if (tokenisAdm !== 'undefined') {
         localStorage.setItem('token',token)
       }      
+      const dataToken = {
+        id,
+        email,
+        nome,
+        isAdm,
+        roles,
+        permissions,
+      }
       setUser({
         id,
         email,
@@ -99,8 +121,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         isAdm,
         roles,
         permissions,
-      });
-
+      });      
+      localStorage.setItem('user',JSON.stringify(dataToken))
      /*  api.instance.defaults.headers.common['Authorization'] = `Bearer ${token}`; */
       setErroAuth(false);
       setIsAuthenticated(true)

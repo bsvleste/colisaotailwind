@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { addMonths, subMonths } from "date-fns";
 import { AuthContext } from "../../contexts/AuthContexts";
+import Can from "../Can";
 export interface ScoreboardMatchProps {
     _id: string;
     segundoQuadro: {
@@ -19,7 +20,7 @@ export interface ScoreboardMatchProps {
     dataPartida: string;
   }
 export function CardScoreboard(){
-  const { isAuthenticated}= useContext(AuthContext)
+  const { isAuthenticated ,user}= useContext(AuthContext)
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [getIdToUpdate, setGetIdToUpdate] = useState('');
@@ -35,6 +36,7 @@ export function CardScoreboard(){
         new Date(res.dataPartida).getFullYear() === selectedDate.getFullYear()
         ); 
         setScoreboard(resultsMont);
+       
       }
       useEffect(() => {
         getScoreboard();
@@ -60,14 +62,15 @@ export function CardScoreboard(){
             <SelectedMonth selectedDate={selectedDate} handleChangeDate={handleChangeDate}/>
 
                   {
-                    isLoading ? <h1>Ola</h1>:scoreboard.map((data)=>(
+                    isLoading ? <h1>Loading....</h1>:scoreboard.map((data)=>(
                       <CardMatch key={data._id} info={data}/>                                     
                       ))   
                     }           
-
-               <div className="w-full sm:w-[35.5rem] flex justify-between tems-center ">
-                <button className="rounded-md text-black bg-colisao-500  w-full sm:w-[35.5rem] h-14 mb-16">Novo Placar</button>
-              </div> 
+                <Can roles={['administrator']}>
+                  <div className="w-full sm:w-[35.5rem] flex justify-between tems-center ">
+                    <button className="rounded-md text-black bg-colisao-500  w-full sm:w-[35.5rem] h-14 mb-16">Novo Placar</button>
+                  </div> 
+                </Can>
             </div>
                  
         </div>

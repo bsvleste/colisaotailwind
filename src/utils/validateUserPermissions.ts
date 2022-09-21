@@ -13,7 +13,6 @@ type User = {
     roles,
   }: ValidateUserPermissionsParams) {
     if (permissions?.length > 0) {
-      console.log(`tamanho da ${permissions}`);
       const hasAllPermissions = permissions?.every((permission) => {
         return user.permissions.includes(permission);
       });
