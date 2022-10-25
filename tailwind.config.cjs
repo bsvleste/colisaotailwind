@@ -7,15 +7,24 @@ module.exports = {
     './src/**/*.{js,jsx,ts,tsx,vue}',
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'logo-colisao': "url('../../assets/logoColisao.png')",
-      },
-      colors: {
-        colisao: {
-          500: "#FFED00"
-        }
+    fontSize: {
+      sx: 14,
+      sm: 16,
+      md: 18,
+      lg: 20,
+      xl: 24,
+      xxl: 32
+    },
+    colors: {
+      'black': "#000",
+      yellow: {
+        500: '#FFED00'
       }
+    },
+    extend: {
+      fontFamily: {
+        sans: "Roboto, sans-serif"
+      },
     },
   },
   plugins: [],

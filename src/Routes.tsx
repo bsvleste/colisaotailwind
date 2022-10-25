@@ -1,15 +1,15 @@
 import ReactDOM from "react-dom/client";
 import {
-    BrowserRouter,
-    Routes,
-    Route,
-    RouteProps,
-    Outlet,
-    Navigate,
-    useLocation,
-    useNavigate
-  } from "react-router-dom";
-import { isAuthenticated,  } from './Auth';
+  BrowserRouter,
+  Routes,
+  Route,
+  RouteProps,
+  Outlet,
+  Navigate,
+  useLocation,
+  useNavigate
+} from "react-router-dom";
+import { isAuthenticated, } from './Auth';
 import { Bid } from "./pages/Bid";
 import { Scoreboard } from "./pages/Scoreboard";
 import { SignIn } from "./pages/SignIn";
@@ -17,33 +17,33 @@ import { Signup } from "./pages/Signup";
 import { WelCome } from "./pages/Welcome";
 
 
-const PrivateRoutes = ()=>{
+const PrivateRoutes = () => {
   const location = useLocation();
   const signed = isAuthenticated();
-  
-  return signed ? (<Outlet />): (<Navigate to="/welcome" state={{from:location}} replace/>)
+
+  return signed ? (<Outlet />) : (<Navigate to="/welcome" state={{ from: location }} replace />)
 }
 const Rotas = () => (
-    
-    
-      <Routes>
-      <Route  path="/signin" element={<SignIn />}/>
-      <Route  path="/signup" element={<Signup />}/>
-      <Route  path="/scoreboard" element={<Scoreboard />}/>
-      <Route  path="/welcome" element={<WelCome />}/>
-      
-      <Route element={<PrivateRoutes/>}>
-        <Route path="/" element={<Scoreboard />} />
-        <Route path="/bid" element={<Bid />} />
-        <Route path="*" element={<Bid/>} />
-      </Route> 
-      </Routes>
-    
+
+
+  <Routes>
+    <Route path="/signin" element={<SignIn />} />
+    <Route path="/signup" element={<Signup />} />
+    <Route path="/scoreboard" element={<Scoreboard />} />
+    <Route path="/welcome" element={<WelCome />} />
+
+    <Route element={<PrivateRoutes />}>
+      <Route path="/" element={<Scoreboard />} />
+      <Route path="/bid" element={<Bid />} />
+      <Route path="*" element={<Bid />} />
+    </Route>
+  </Routes>
+
 )
 
 
 
-export default Rotas; 
+export default Rotas;
 
 
 /* import {
@@ -78,25 +78,25 @@ const Rotas = () => (
     }
     {
     */
-        /*
-         <Route  path="/signin" element={<SignIn />}/>
-      <Route  path="/signup" element={<Signup />}/>
-      <Route  path="/scoreboard" element={<Scoreboard />}/>
-      <Route  path="/welcome" element={<WelCome />}/>
-      
-      <Route element={<PrivateRoutes/>}>
-      <Route path="/bid" element={<Bid />} />
+/*
+ <Route  path="/signin" element={<SignIn />}/>
+<Route  path="/signup" element={<Signup />}/>
+<Route  path="/scoreboard" element={<Scoreboard />}/>
+<Route  path="/welcome" element={<WelCome />}/>
+ 
+<Route element={<PrivateRoutes/>}>
+<Route path="/bid" element={<Bid />} />
 
-      </Route> 
-    }
-    {
-    */
-          /* <Route index element={<Home />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="*" element={<NoPage />} /> 
-      }
-      */
-    /* </Routes>
-  </BrowserRouter> 
-  )
-  */
+</Route> 
+}
+{
+*/
+/* <Route index element={<Home />} />
+<Route path="contact" element={<Contact />} />
+<Route path="*" element={<NoPage />} /> 
+}
+*/
+/* </Routes>
+</BrowserRouter> 
+)
+*/

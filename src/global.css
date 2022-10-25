@@ -3,13 +3,10 @@
 @import 'tailwindcss/utilities';
 
 body {
-	@apply bg-black text-colisao-500
+	@apply bg-black text-yellow-500
 }
 
-.error {
-	@apply flex items-center border-red-700 border-b-2 px-0 py-4
-}
-
+/*
 @layer utilities {
 	.link-underline {
 		border-bottom-width: 0;
@@ -32,3 +29,4 @@ body {
 
 	}
 }
+*/
