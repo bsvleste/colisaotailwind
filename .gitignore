@@ -27,3 +27,6 @@ dist-ssr
 
 .env.local
 package-lock.json
+
+#storybook
+storybook-static
