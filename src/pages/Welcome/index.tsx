@@ -1,7 +1,10 @@
+import { PaperPlaneTilt } from "phosphor-react";
 import { useContext, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../Auth";
+import { Button } from "../../components/Button";
 import { Logo } from "../../components/Logo";
+import { Text } from "../../components/Text";
 
 
 export function WelCome() {
@@ -19,11 +22,18 @@ export function WelCome() {
                     <Logo />
                 </div>
 
-                <div className="flex flex-col justify-center sm:bg-yellow-500 sm:text-black sm:items-center  sm:h-screen">
+                <div className="flex flex-col justify-center max-w-[500px] sm:bg-black sm:text-yellow-500 sm:items-center  sm:h-screen">
                     <div className="w-9/12 sm:w-3/6 text-center mx-auto  mb-4">
-                        Bem Vindo a pagina do <strong>Colisão</strong> Para ver os resultados <NavLink className=" text-yellow-100 hover:text-yellow-600 sm:text-slate-400 sm:hover:text-slate-500 transition-colors" to="/scoreboard">clique aqui</NavLink>
+                        Bem Vindo a pagina do <strong>Colisão</strong> Para ver os resultados <NavLink className=" text-text-500 hover:text-yellow-500  transition-colors" to="/scoreboard">clique aqui</NavLink>
                     </div>
-                    <button className="rounded-md text-black bg-colisao-500 sm:bg-black sm:text-colisao-500 w-full sm:w-[90%] sm:mx-auto h-14" onClick={() => { navigate("/signin") }}>Sign In Now</button>
+                    <Button.Root size="lg" color="bg-yellow" onClick={() => { navigate("/signin") }}>
+                        <Button.Icon>
+                            <PaperPlaneTilt />
+                        </Button.Icon>
+                        Login
+                    </Button.Root>
+
+                    {/* <button className="rounded-md text-black bg-colisao-500 sm:bg-black sm:text-colisao-500 w-full sm:w-[90%] sm:mx-auto h-14" onClick={() => { navigate("/signin") }}>Sign In Now</button> */}
                 </div>
 
             </div>
