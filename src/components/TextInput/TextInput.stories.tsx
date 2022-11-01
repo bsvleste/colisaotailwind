@@ -3,7 +3,7 @@ import { Envelope } from 'phosphor-react';
 import { TextInput, TextInputRootsProps, TextInputInputProps } from ".";
 
 export default {
-    title: "Components/TextInput",
+    title: "Component/TextInput",
     component: TextInput.Root,
     args: {
         children: [

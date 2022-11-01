@@ -6,7 +6,7 @@ import { Slot } from "@radix-ui/react-slot"
 export interface TextInputRootsProps {
     children: ReactNode
 }
-export interface TextInputIconProps {
+export interface TextInputIconProps extends InputHTMLAttributes<HTMLInputElement> {
     children: ReactNode
 }
 export interface TextInputInputProps extends InputHTMLAttributes<HTMLInputElement> { }
@@ -15,7 +15,7 @@ export interface TextInputInputProps extends InputHTMLAttributes<HTMLInputElemen
 function TextInputRoot(props: TextInputRootsProps) {
     return (
         <div className={clsx(
-            "flex items-center gap-3 py-4 px-3 h-12 rounded w-full bg-grays-900",
+            "flex items-center gap-3 py-4 px-3 h-12 rounded-[50px] w-full bg-grays-900",
             "focus-within:ring-2 ring-yellow-500"
 
         )}>
@@ -26,7 +26,7 @@ function TextInputRoot(props: TextInputRootsProps) {
 
 function TextInputIcon({ children }: TextInputIconProps) {
     return (
-        <Slot className="w-6 h-6 text-grays-400">
+        <Slot className="w-6 h-6 text-yellow-500">
             {children}
         </Slot>
     )

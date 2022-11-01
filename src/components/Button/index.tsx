@@ -10,7 +10,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,
     asChild?: boolean,
     className?: string,
-    color?: 'bg-black' | 'bg-yellow'
+    color?: 'bg-black' | 'bg-yellow' | "bg-red"
 }
 function ButtonIcon({ children }: ButtonIconProps) {
     return (
@@ -27,6 +27,7 @@ function ButtonRoot({ size = 'sm', children, asChild, className, color = 'bg-yel
             {
                 'border-yellow-500 bg-black  text-yellow-500 hover:border-black hover:bg-yellow-500 hover:text-black': color === 'bg-black',
                 'border-black bg-yellow-500  text-black hover:border-yellow-500 hover:bg-black hover:text-yellow-500': color === 'bg-yellow',
+                'border-red-600  text-red-600 hover:bg-red-600 hover:text-black': color === 'bg-red',
 
                 'w-28 text-sx py-2 px-2': size === 'sm',
                 'w-52 text-sm py-3 px-3': size === 'md',

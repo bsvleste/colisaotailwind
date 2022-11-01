@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { PaperPlaneTilt } from 'phosphor-react';
+import { PaperPlaneTilt, TrashSimple } from 'phosphor-react';
 import { Button, ButtonIconProps, ButtonProps } from ".";
 
 export default {
@@ -15,7 +15,7 @@ export default {
     },
     argTypes: {
         color: {
-            options: ['bg-black', 'bg-yellow'],
+            options: ['bg-black', 'bg-yellow', 'bg-red'],
             control: {
                 type: 'inline-radio'
             }
@@ -32,7 +32,7 @@ export const Default: StoryObj = {}
 export const ButtonIcon: StoryObj<ButtonProps> = {
     args: {
         children: [
-            <Button.Icon><PaperPlaneTilt /></Button.Icon>
+            <Button.Icon><TrashSimple /></Button.Icon>
         ]
     }
 }
