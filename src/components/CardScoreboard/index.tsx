@@ -6,7 +6,7 @@ import { addMonths, subMonths } from "date-fns";
 import { AuthContext } from "../../contexts/AuthContexts";
 import Can from "../Can";
 import { Button } from "../Button";
-import { Envelope, PaperPlaneTilt } from "phosphor-react";
+import { Envelope, SoccerBall } from "phosphor-react";
 export interface ScoreboardMatchProps {
   _id: string;
   segundoQuadro: {
@@ -66,18 +66,17 @@ export function CardScoreboard() {
             <CardMatch key={data._id} info={data} />
           ))
         }
-        <Can roles={['administrator']}>
-          <div className="w-full sm:w-[35.5rem] flex justify-between tems-center ">
-            {/*  <Button.Root>
+        <div className="w-full sm:w-[35.5rem] flex justify-between tems-center mt-8">
+          <Can roles={['administrator']}>
+            <Button.Root color="bg-black" size="lg">
               <Button.Icon>
-                <PaperPlaneTilt />
-                Novo Placar
+                <SoccerBall />
               </Button.Icon>
-            </Button.Root> */}
-          </div>
-        </Can>
+              Novo Placar
+            </Button.Root>
+          </Can>
+        </div>
       </div>
-
     </div>
   )
 }

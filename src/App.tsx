@@ -6,15 +6,16 @@ import Rotas from './Routes'
 
 
 export function App() {
-  const { isAuthenticated}= useContext(AuthContext)
-  return (  
+  const { isAuthenticated } = useContext(AuthContext)
+  return (
     <>
-     {
-          isAuthenticated ? (
-            <Header />
-          ) :
-            ''
-        }
+      {
+        isAuthenticated ? (
+          <Header />
+        ) :
+          ''
+      }
+      <Header />
       <Rotas />
     </>
   )
