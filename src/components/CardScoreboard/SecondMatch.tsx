@@ -14,7 +14,7 @@ export function SecondMatch({segundo}:CardMatchProps){
     const{segundoColisao,segundoAdversario} = segundo
     return (
         <>
-            <div className="text-black mt-8 w-full sm:w-[35.5rem] bg-colisao-500 h-48 flex flex-col  items-center">
+            <div className="text-black mt-8 w-full sm:w-[35.5rem] rounded-t-md bg-yellow-500 h-48 flex flex-col  items-center">
                 
                 <h3 className="mt-4 font-bold">2° Quadro</h3>
                 <div className="w-full mb-8 flex justify-around items-center">

@@ -7,6 +7,8 @@ import { AuthContext } from "../../contexts/AuthContexts";
 import Can from "../Can";
 import { Button } from "../Button";
 import { Envelope, SoccerBall } from "phosphor-react";
+import { useQuery } from "react-query";
+import { useScoreboards } from "../../hooks/useScorebords";
 export interface ScoreboardMatchProps {
   _id: string;
   segundoQuadro: {
@@ -20,16 +22,14 @@ export interface ScoreboardMatchProps {
   dataPartida: string;
 }
 export function CardScoreboard() {
+
+  const { data, isLoading, isFetching, error } = useScoreboards()
   const { isAuthenticated, user } = useContext(AuthContext)
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [getIdToUpdate, setGetIdToUpdate] = useState('');
   const [scoreboard, setScoreboard] = useState<ScoreboardMatchProps[]>([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
-/*     const [data,setData] = useState([]);
- */    async function getScoreboard() {
-    const { data } = await api.get('/placar');
-    setIsLoading(false)
+
+  async function getScoreboard() {
     const resultsMont = data.filter(
       (res: ScoreboardMatchProps) =>
         new Date(res.dataPartida).getMonth() === selectedDate.getMonth() &&
@@ -40,35 +40,25 @@ export function CardScoreboard() {
   }
   useEffect(() => {
     getScoreboard();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate, isModalOpen]);
 
   function handleChangeDate(action: 'next' | 'prev') {
     if (action === 'next') {
       setSelectedDate(addMonths(selectedDate, 1));
-      setIsLoading(!isLoading)
     } else {
       setSelectedDate(subMonths(selectedDate, 1));
-      setIsLoading(!isLoading)
     }
   }
   return (
     <div className="mx-3 sm:mx-auto">
       <div className="container flex flex-col justify-center mb-8 items-center w-full ">
 
-        {isAuthenticated ? "" : <Button.Root><Button.Icon><Envelope /></Button.Icon> SIGN IN</Button.Root>
-        }
-        <SelectedMonth selectedDate={selectedDate} handleChangeDate={handleChangeDate} />
+        <div className="w-full sm:w-[35.5rem] flex justify-between tems-center mt-3 ">
+          {isAuthenticated ? "" : <Button.Root size="lg" color="bg-yellow" ><Button.Icon><Envelope /></Button.Icon> SIGN IN</Button.Root>
+          }
 
-        {
-          isLoading ? <h1>Loading....</h1> : scoreboard.map((data) => (
-            <CardMatch key={data._id} info={data} />
-          ))
-        }
-        <div className="w-full sm:w-[35.5rem] flex justify-between tems-center mt-8">
           <Can roles={['administrator']}>
-            <Button.Root color="bg-black" size="lg">
+            <Button.Root color="bg-yellow" size="lg">
               <Button.Icon>
                 <SoccerBall />
               </Button.Icon>
@@ -76,6 +66,13 @@ export function CardScoreboard() {
             </Button.Root>
           </Can>
         </div>
+        <SelectedMonth selectedDate={selectedDate} handleChangeDate={handleChangeDate} />
+        {
+          isLoading ? <h1>Loading....</h1> : scoreboard.map((data) => (
+            <CardMatch key={data._id} info={data} isFetching={isFetching} />
+          ))
+        }
+
       </div>
     </div>
   )

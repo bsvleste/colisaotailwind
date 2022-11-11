@@ -12,7 +12,7 @@ export function FirstMatch({primeiro}:FirstMatchProps){
     const{primeiroAdversario,primeiroColisao} = primeiro
     return (
         <>
-            <div className="w-full sm:w-[35.5rem] text-colisao-500 bg-black h-48 flex flex-col justify-center items-center">
+            <div className="w-full sm:w-[35.5rem] text-colisao-500 rounded-b-md bg-grays-900 h-48 flex flex-col justify-center items-center mb-3">
                 <h3 className="mt-2 font-bold">1°Quadro</h3>
                 <div className="w-full mb-8 flex justify-around items-center">
                     <div className=' flex flex-col justify-center items-center'>
